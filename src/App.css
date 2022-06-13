@@ -13,11 +13,15 @@ body {
 }
 
 .galleryItem {
-	width: 100px;
-	margin: 50px;
+	width: 150px;
+	margin: 10px;
+	padding: 10px;
+
+	display: inline-block;
+	border: 1px solid white;
 }
 
 .galleryItem img {
-	width: 100%;
+	width: 100px;
 	margin: auto;
 }

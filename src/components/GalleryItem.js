@@ -5,20 +5,27 @@ function GalleryItem(props) {
 
 	const simpleView = () => {
 		return (
-			<img src={props.item.artworkUrl60}/>
+			<div>
+				<img src={props.item.artworkUrl60} alt={props.item.collectionName}/>
+				<h4>{props.item.trackName}</h4>
+			</div>
 		)
 	}
 
 	const detailedView = () => {
 		return (
-			<img src={props.item.artworkUrl100}/>
+			<div>
+				<img src={props.item.artworkUrl100} alt={props.item.collectionName}/>
+				<h4>{props.item.trackName}</h4>
+				<h5>{props.item.artistName}</h5>
+
+			</div>
 		)
 	}
 
 	return (
 		<div 
-			onClick={() => {setView(!view)}} 
-			style={{'display': 'inline-block'}}
+			onClick={() => {setView(!view)}}
 			className='galleryItem'
 		>
 			{view ? detailedView() : simpleView()}
