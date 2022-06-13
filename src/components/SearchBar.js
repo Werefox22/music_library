@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { SearchContext } from "../context/SearchContext";
 
 function SearchBar() {
-	let [term, handleSearch] = useContext(SearchContext);
+	let {term, handleSearch} = useContext(SearchContext);
 
 	return (
 		<form>
@@ -11,7 +11,7 @@ function SearchBar() {
 				placeholder="Search for your favorite song..." 
 				ref={term}
 			/>
-			<button onClick={(e) => {handleSearch(e, term)}}>Submit</button>
+			<button onClick={(e) => {handleSearch(e, term.current.value)}}>Submit</button>
 		</form>
 	)
 }
