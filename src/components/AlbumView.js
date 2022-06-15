@@ -30,16 +30,28 @@ function AlbumView() {
     const renderAlbum = justSongs.map((song, i) => {
         return (
             <div key={i}>
-                <p>{song.trackName}</p>
+                <Link to={`/song/${song.trackId}`}>
+                    <p>{song.trackName}</p>
+                </Link>
             </div>
         )
     })
 
+    const displayAlbum = (data) => {
+        return (
+            <div>
+                <img src={data.artworkUrl100} />
+                <h2>{data.collectionName}</h2>
+                <h3>{data.artistName}</h3>
+            </div>
+        )
+    }
+
     return (
         <div>
             {navButtons()}
-            {albumData.length > 0 ? <h2>{albumData[0].collectionName}</h2> : <h2>Loading...</h2>}
-            {albumData.length > 0 ? <h3>{albumData[0].artistName}</h3> : <h3>Loading...</h3>}
+            {albumData.length > 0 ? displayAlbum(albumData[0]) : <h2>Loading...</h2>}
+            <hr />
             {renderAlbum}
         </div>
     )
