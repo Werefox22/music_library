@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 function ArtistView() {
 	const { id } = useParams()
@@ -20,7 +20,9 @@ function ArtistView() {
     const renderAlbums = justAlbums.map((album, i) => {
         return (
             <div key={i}>
-                <p>{album.collectionName}</p>
+                <Link to={`/album/${album.collectionId}`}>
+                    <p>{album.collectionName}</p>
+                </Link>
             </div>
         )
     })
