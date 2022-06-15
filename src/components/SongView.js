@@ -39,8 +39,16 @@ function SongView() {
 						{data.artistName}
 					</Link>
 				</h3>
+
+				<p>Released {formatDate(data.releaseDate)}</p>
 			</div>
 		)
+	}
+
+	const formatDate = (date) => {
+		const months = ["January","February","March","April","May","June","July", "August","September","October","November","December"];		
+		let arr = date.split('-');
+		return `${months[parseInt(arr[1])]} ${arr[2].substring(0, 2)}, ${arr[0]}`
 	}
 
     return (
