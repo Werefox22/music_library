@@ -1,11 +1,14 @@
 import { useState } from 'react'
+import { useParams } from 'react-router-dom'
 
 function ArtistView() {
+	const { id } = useParams()
     const [ artistData, setArtistData ] = useState([])
 
     return (
         <div>
-            ArtistView
+            <h1>ArtistView</h1>
+			<p>Id: {id}</p>
         </div>
     )
 }
