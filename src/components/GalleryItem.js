@@ -17,7 +17,11 @@ function GalleryItem(props) {
 		return (
 			<div>
 				<img src={props.item.artworkUrl100} alt={props.item.collectionName}/>
-				<h4>{props.item.trackName}</h4>
+				<h4>
+					<Link to={`/song/${props.item.trackId}`}>
+						{props.item.trackName}
+					</Link>
+				</h4>
 
 				<h5>
 					<Link to={`/artist/${props.item.artistId}`}>
