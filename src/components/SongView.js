@@ -25,10 +25,28 @@ function SongView() {
         fetchData()
     }, [id])
 
+	const displaySong = (data) => {
+		return (
+			<div>
+				<img src={data.artworkUrl100}/>
+				<h2>{data.trackName}</h2>
+				<h3>
+					<Link to={`/album/${data.collectionId}`}>
+						{data.collectionName}
+					</Link>
+					<span> | </span>
+					<Link to={`/artist/${data.artistId}`}>
+						{data.artistName}
+					</Link>
+				</h3>
+			</div>
+		)
+	}
+
     return (
         <div>
             {navButtons()}
-			{songData.length > 0 ? <h2>{songData[0].trackName}</h2> : <h2>Loading...</h2>}
+			{songData.length > 0 ? displaySong(songData[0]) : <h2>Loading...</h2>}
         </div>
     )
 }
