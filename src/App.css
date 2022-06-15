@@ -3,6 +3,14 @@ body {
 	color: white;
 }
 
+a {
+	color: lightcyan;
+}
+
+a:visited {
+	color: pink
+}
+
 .App {
 	padding: 1em;
 	margin: 1em;
