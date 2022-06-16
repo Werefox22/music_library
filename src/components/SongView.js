@@ -44,7 +44,7 @@ function SongView() {
 
     return (
         <div>
-            {NavButtons()}
+            <NavButtons />
 			{songData.length > 0 ? displaySong(songData[0]) : <h2>Loading...</h2>}
         </div>
     )

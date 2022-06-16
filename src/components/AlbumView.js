@@ -40,7 +40,7 @@ function AlbumView() {
 
     return (
         <div>
-            {NavButtons()}
+            <NavButtons />
             {albumData.length > 0 ? displayAlbum(albumData[0]) : <h2>Loading...</h2>}
             <hr />
             {renderAlbum}
