@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import NavButtons from '../context/NavButtons'
+import NavButtons from '../scripts/NavButtons'
 
 function SongView() {
 	const { id } = useParams()
