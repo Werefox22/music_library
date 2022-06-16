@@ -36,7 +36,7 @@ function ArtistView() {
             </div>
         )
     })
-
+    
     return (
         <div>
             {navButtons()}
