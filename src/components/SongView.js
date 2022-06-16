@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import NavButtons from '../scripts/NavButtons'
+import LoadingIcon from './LoadingIcon'
 
 function SongView() {
 	const { id } = useParams()
@@ -45,7 +46,7 @@ function SongView() {
     return (
         <div>
             <NavButtons />
-			{songData.length > 0 ? displaySong(songData[0]) : <h2>Loading...</h2>}
+			{songData.length > 0 ? displaySong(songData[0]) : <LoadingIcon />}
         </div>
     )
 }

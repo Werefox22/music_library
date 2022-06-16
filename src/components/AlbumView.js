@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import NavButtons from '../scripts/NavButtons'
+import LoadingIcon from './LoadingIcon'
 
 function AlbumView() {
 	const { id } = useParams()
@@ -41,7 +42,7 @@ function AlbumView() {
     return (
         <div>
             <NavButtons />
-            {albumData.length > 0 ? displayAlbum(albumData[0]) : <h2>Loading...</h2>}
+            {albumData.length > 0 ? displayAlbum(albumData[0]) : <LoadingIcon />}
             <hr />
             {renderAlbum}
         </div>

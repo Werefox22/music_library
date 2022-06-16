@@ -8,7 +8,6 @@ import SearchBar from './components/SearchBar';
 import AlbumView from './components/AlbumView';
 import ArtistView from './components/ArtistView';
 import SongView from './components/SongView';
-import LoadingIcon from './components/LoadingIcon'
 
 // Context
 import { DataContext } from './context/DataContext';

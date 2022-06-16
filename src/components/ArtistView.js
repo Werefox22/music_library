@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import NavButtons from '../scripts/NavButtons'
+import LoadingIcon from './LoadingIcon'
 
 function ArtistView() {
 	const { id } = useParams()
@@ -31,7 +32,7 @@ function ArtistView() {
     return (
         <div>
             <NavButtons />
-            {artistData.length > 0 ? <h2>{artistData[0].artistName}</h2> : <h2>Loading...</h2>}
+            {artistData.length > 0 ? <h2>{artistData[0].artistName}</h2> : <LoadingIcon />}
             {renderAlbums}
         </div>
     )
