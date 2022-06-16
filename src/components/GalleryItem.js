@@ -10,7 +10,7 @@ function GalleryItem(props) {
 
 	const simpleView = () => {
 		return (
-			<Card style={{width: '10rem'}}>
+			<Card>
 				<Card.Img variant='top' src={props.item.artworkUrl100} alt={props.item.collectionName}/>
 				<Card.Body>
 					<Card.Title>{props.item.trackName}</Card.Title>
@@ -22,7 +22,7 @@ function GalleryItem(props) {
 
 	const detailedView = () => {
 		return (
-			<Card style={{width: '12rem'}}>
+			<Card>
 				<Card.Img variant='top' src={props.item.artworkUrl100} alt={props.item.collectionName}/>
 				<Card.Body>
 					<Card.Title>
@@ -32,7 +32,6 @@ function GalleryItem(props) {
 						<Link to={`/artist/${props.item.artistId}`}>{props.item.artistName}</Link>
 					</Card.Subtitle>
 					<Card.Text>
-						<hr />
 						<Link to={`/album/${props.item.collectionId}`}>
 							{`Track ${props.item.trackNumber}/${props.item.trackCount} from ${props.item.collectionName}`}
 						</Link>
