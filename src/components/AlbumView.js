@@ -1,19 +1,10 @@
 import { useState, useEffect } from 'react'
-import { Link, useParams, useNavigate } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
+import NavButtons from '../context/NavButtons'
 
 function AlbumView() {
 	const { id } = useParams()
     const [ albumData, setAlbumData ] = useState([])
-    const navigate = useNavigate()
-
-    const navButtons = () => {
-        return (
-            <div>
-                <button onClick={() => navigate('/')}>Home</button>
-                <button onClick={() => navigate(-1)}>Back</button>
-            </div>
-        )
-    }
 
     useEffect(() => {
         const API_URL = `http://localhost:4000/song/${id}`
@@ -49,7 +40,7 @@ function AlbumView() {
 
     return (
         <div>
-            {navButtons()}
+            {NavButtons()}
             {albumData.length > 0 ? displayAlbum(albumData[0]) : <h2>Loading...</h2>}
             <hr />
             {renderAlbum}

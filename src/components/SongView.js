@@ -1,21 +1,12 @@
 import { useEffect, useState } from 'react'
-import { Link, useParams, useNavigate } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
+import NavButtons from '../context/NavButtons'
 
 function SongView() {
 	const { id } = useParams()
     const [ songData, setSongData ] = useState([])
-    const navigate = useNavigate()
 
-    const navButtons = () => {
-        return (
-            <div>
-                <button onClick={() => navigate('/')}>Home</button>
-                <button onClick={() => navigate(-1)}>Back</button>
-            </div>
-        )
-    }
-
-    useEffect(() => {
+	useEffect(() => {
         const API_URL = `http://localhost:4000/album/${id}`
         const fetchData = async () => {
             const response = await fetch(API_URL)
@@ -53,7 +44,7 @@ function SongView() {
 
     return (
         <div>
-            {navButtons()}
+            {NavButtons()}
 			{songData.length > 0 ? displaySong(songData[0]) : <h2>Loading...</h2>}
         </div>
     )
