@@ -16,8 +16,9 @@ function Gallery() {
 	})
 
 	const rows = []
-	const itemsPerRow = 5
+	const itemsPerRow = 7
 	
+	// make the rows
 	for (let i = 0; i < Math.ceil(display.length / itemsPerRow); i++) {
 		let currentRow = []
 		for (let j = 0; j < itemsPerRow; j++) {

@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import NavButtons from '../scripts/NavButtons'
 import LoadingIcon from './LoadingIcon'
+import Card from 'react-bootstrap/Card'
+import ListGroup from 'react-bootstrap/ListGroup'
 
 function AlbumView() {
 	const { id } = useParams()
@@ -19,22 +21,26 @@ function AlbumView() {
 
     const justSongs = albumData.filter((entry) => entry.wrapperType === 'track')
 
-    const renderAlbum = justSongs.map((song, i) => {
+    const renderSongs = justSongs.map((song, i) => {
         return (
-            <div key={i}>
-                <Link to={`/song/${song.trackId}`}>
-                    <p>{song.trackName}</p>
-                </Link>
-            </div>
+            <ListGroup.Item key={i}>
+                {i + 1}. <Link to={`/song/${song.trackId}`}>{song.trackName}</Link>
+            </ListGroup.Item>
         )
     })
 
-    const displayAlbum = (data) => {
+    const renderAlbumDetails = (data) => {
         return (
             <div>
-                <img src={data.artworkUrl100} />
-                <h2>{data.collectionName}</h2>
-                <h3>{data.artistName}</h3>
+                <Card style={{width: '150px'}}>
+                    <Card.Img src={data.artworkUrl100} />
+                </Card>
+                <Card>
+                    <Card.Body>
+                        <Card.Title>{data.collectionName}</Card.Title>
+                        <Card.Subtitle><Link to={`/artist/${data.artistId}`}>{data.artistName}</Link></Card.Subtitle>
+                    </Card.Body>
+                </Card>
             </div>
         )
     }
@@ -42,9 +48,11 @@ function AlbumView() {
     return (
         <div>
             <NavButtons />
-            {albumData.length > 0 ? displayAlbum(albumData[0]) : <LoadingIcon />}
+            {albumData.length > 0 ? renderAlbumDetails(albumData[0]) : <LoadingIcon />}
             <hr />
-            {renderAlbum}
+            <ListGroup>
+                {renderSongs}
+            </ListGroup>
         </div>
     )
 }

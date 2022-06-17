@@ -1,7 +1,9 @@
-import { Suspense, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import NavButtons from '../scripts/NavButtons'
 import LoadingIcon from './LoadingIcon'
+import Card from 'react-bootstrap/Card'
+import ListGroup from 'react-bootstrap/ListGroup'
 
 function ArtistView() {
 	const { id } = useParams()
@@ -21,19 +23,31 @@ function ArtistView() {
 
     const renderAlbums = justAlbums.map((album, i) => {
         return (
-            <div key={i}>
+            <ListGroup.Item key={i}>
                 <Link to={`/album/${album.collectionId}`}>
                     <p>{album.collectionName}</p>
                 </Link>
-            </div>
+            </ListGroup.Item>
         )
     })
+
+    const displayArtist = (data) => {
+        return (
+            <Card>
+                <Card.Body>
+                    <Card.Title>{data.artistName}</Card.Title>
+                </Card.Body>
+                <ListGroup>
+                    {renderAlbums}
+                </ListGroup>
+            </Card>
+        )
+    }
     
     return (
         <div>
             <NavButtons />
-            {artistData.length > 0 ? <h2>{artistData[0].artistName}</h2> : <LoadingIcon />}
-            {renderAlbums}
+            {artistData.length > 0 ? displayArtist(artistData[0]) : <LoadingIcon />}
         </div>
     )
 }

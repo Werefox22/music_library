@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import NavButtons from '../scripts/NavButtons'
 import LoadingIcon from './LoadingIcon'
+import Image from 'react-bootstrap/Image'
 
 function SongView() {
 	const { id } = useParams()
@@ -20,7 +21,7 @@ function SongView() {
 	const displaySong = (data) => {
 		return (
 			<div>
-				<img src={data.artworkUrl100}/>
+				<Image thumbnail='true' src={data.artworkUrl100}/>
 				<h2>{data.trackName}</h2>
 				<h3>
 					<Link to={`/album/${data.collectionId}`}>
@@ -31,7 +32,7 @@ function SongView() {
 						{data.artistName}
 					</Link>
 				</h3>
-
+				<hr />
 				<p>Released {formatDate(data.releaseDate)}</p>
 			</div>
 		)
